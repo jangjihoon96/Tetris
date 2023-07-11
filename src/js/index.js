@@ -1,3 +1,5 @@
+import BLOCKS from "./blocks.js";
+
 // DOM
 const playground = document.querySelector(".playground > ul");
 
@@ -10,41 +12,13 @@ let score = 0;
 let duration = 500;
 let downInerval;
 let tempMovingItem;
-
-const BLOCKS = {
-  tree: [
-    [
-      [2, 1],
-      [0, 1],
-      [1, 0],
-      [1, 1],
-    ],
-    [
-      [1, 2],
-      [0, 1],
-      [1, 0],
-      [1, 1],
-    ],
-    [
-      [1, 2],
-      [0, 1],
-      [2, 1],
-      [1, 1],
-    ],
-    [
-      [2, 1],
-      [1, 2],
-      [1, 0],
-      [1, 1],
-    ],
-  ],
-};
-
+const InitBlockArray = Object.entries(BLOCKS);
+const InitRandomIndex = Math.floor(Math.random() * InitBlockArray.length);
 const movingItem = {
-  type: "tree",
-  direction: 3,
+  type: InitBlockArray[InitRandomIndex][0],
+  direction: 0,
   top: 0,
-  left: 0,
+  left: 3,
 };
 
 init();
@@ -110,6 +84,9 @@ function seizeBlock() {
 }
 
 function generateNewBlock() {
+  const blockArray = Object.entries(BLOCKS);
+  const randomIndex = Math.floor(Math.random() * blockArray.length);
+  movingItem.type = blockArray[randomIndex][0];
   movingItem.top = 0;
   movingItem.left = 3;
   movingItem.direction = 0;
