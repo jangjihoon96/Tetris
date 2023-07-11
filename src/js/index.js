@@ -2,6 +2,8 @@ import BLOCKS from "./blocks.js";
 
 // DOM
 const playground = document.querySelector(".playground > ul");
+const gameText = document.querySelector(".game-text");
+const scoreDisplay = document.querySelector(".score");
 
 // Setting
 const GAME_ROWS = 20;
@@ -60,8 +62,12 @@ function renderBlocks(moveType = "") {
       target.classList.add(type, "moving");
     } else {
       tempMovingItem = { ...movingItem };
+      if (moveType === "retry") {
+        clearInterval(downInerval);
+        showGameoverText();
+      }
       setTimeout(() => {
-        renderBlocks();
+        renderBlocks("retry");
         if (moveType === "top") {
           seizeBlock();
         }
@@ -142,6 +148,10 @@ function dropBlock() {
   downInerval = setInterval(() => {
     moveBlock("top", 1);
   }, 5);
+}
+
+function showGameoverText() {
+  gameText.style.display = "flex";
 }
 
 // event handling
