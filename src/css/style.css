@@ -20,6 +20,21 @@
   height: 25px;
   outline: 1px solid #ccc;
 }
+.square {
+  background-color: #ee5fb9;
+}
+.bar {
+  background-color: rgb(251, 133, 120);
+}
 .tree {
-  background-color: #67c23a;
+  background-color: #72d242;
+}
+.zee {
+  background-color: #e6ca3c;
+}
+.elLeft {
+  background-color: #b55adc;
+}
+.elRight {
+  background-color: #1bc2a1;
 }
