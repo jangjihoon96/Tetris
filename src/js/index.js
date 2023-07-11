@@ -28,7 +28,8 @@ function init() {
   for (let i = 0; i < GAME_ROWS; i++) {
     prependNewLine();
   }
-  renderBlocks();
+  // renderBlocks();
+  generateNewBlock();
 }
 
 function prependNewLine() {
@@ -84,6 +85,11 @@ function seizeBlock() {
 }
 
 function generateNewBlock() {
+  clearInterval(downInerval);
+  downInerval = setInterval(() => {
+    moveBlock("top", 1);
+  }, duration);
+
   const blockArray = Object.entries(BLOCKS);
   const randomIndex = Math.floor(Math.random() * blockArray.length);
   movingItem.type = blockArray[randomIndex][0];
