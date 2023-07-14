@@ -3,8 +3,10 @@ import BLOCKS from "./blocks.js";
 // DOM
 const playground = document.querySelector(".playground > ul");
 const gameText = document.querySelector(".game-text");
+const startText = document.querySelector(".start-text");
 const scoreDisplay = document.querySelector(".score");
 const restartButton = document.querySelector(".game-text > button");
+const startButton = document.querySelector(".start-text > button");
 
 // Setting
 const GAME_ROWS = 20;
@@ -24,7 +26,6 @@ const movingItem = {
   left: 3,
 };
 
-init();
 // functions
 function init() {
   tempMovingItem = { ...movingItem };
@@ -178,11 +179,15 @@ document.addEventListener("keydown", (e) => {
     default:
       break;
   }
-  console.log(e);
 });
 
 restartButton.addEventListener("click", () => {
   playground.innerHTML = "";
   gameText.style.display = "none";
+  init();
+});
+
+startButton.addEventListener("click", () => {
+  startText.style.display = "none";
   init();
 });
